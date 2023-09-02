@@ -1,5 +1,5 @@
 // Initialize variables
-let currentChapter = 0;
+let currentChapter = 1;
 const contentDiv = document.getElementById("content");
 const chapterTitleElement = document.getElementById("chapter-title");
 const chapterContentElement = document.getElementById("chapter-content");
@@ -12,7 +12,7 @@ function loadChapter(chapterNumber) {
         .then((response) => response.text())
         .then((data) => {
             chapterTitleElement.textContent = `Chapter ${chapterNumber}`;
-            chapterContentElement.textContent = data;
+            chapterContentElement.innerHTML = `<p>${data}</p>`;
         })
         .catch((error) => {
             console.error(`Error loading chapter${chapterNumber}.txt:`, error);
@@ -20,7 +20,7 @@ function loadChapter(chapterNumber) {
 }
 
 // Initial display
-loadChapter(1);
+loadChapter(currentChapter);
 
 // Event listeners for navigation
 prevButton.addEventListener("click", () => {
